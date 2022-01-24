@@ -23,4 +23,5 @@ urlpatterns = [
     path('triceps/', include('triceps.urls')),
     path('vrksasana/', include('vrksasana.urls')),
     path('squat/', include('squat.urls')),
+    path('pullup/', include('pullup.urls')),
 ]
