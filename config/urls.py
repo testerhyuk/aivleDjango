@@ -22,4 +22,5 @@ urlpatterns = [
     path('home/', config_views.home, name='home'),
     path('triceps/', include('triceps.urls')),
     path('vrksasana/', include('vrksasana.urls')),
+    path('squat/', include('squat.urls')),
 ]

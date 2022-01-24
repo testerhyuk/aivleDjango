@@ -91,7 +91,7 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
+#DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 
 LOGGING = {
     'version':1,
