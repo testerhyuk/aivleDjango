@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'triceps',
+    'member',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'custom': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aivle3',
+        'USER': 'aivle3',
+        'PASSWORD': '54321',
+        'HOST': '15.164.153.191',
+        'PORT': 3306
     }
 }
 
