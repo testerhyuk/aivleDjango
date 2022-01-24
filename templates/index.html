@@ -64,6 +64,7 @@
                         <li class="nav-item"><a class="nav-link" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</a></li>
                         <div id="id02" class="modal2">
                         <form class="modal-content2 animate2" action="">
+                            {% csrf_token %}
                             <div class="imgcontainer2">
                                 <span onclick="document.getElementById('id02').style.display='none'" class="close2" title="Close Modal2">&times;</span>
                             </div>
@@ -84,13 +85,13 @@
                             <input type="password" placeholder="Enter Password" name="psw2" required>
 
                             <label for="phone"><b>번호</b></label>
-                            <input type="text" placeholder="Enter phone" name="phone" required>
+                            <input type="text" placeholder="010-0000-0000" name="phone" required>
 
                             <label for="height"><b>키</b></label>
-                            <input type="text" placeholder="height" name="height" required>
+                            <input type="number" placeholder="height" name="height" required>
 
                             <label for="weight"><b>몸무게</b></label>
-                            <input type="text" placeholder="weight" name="weight" required>
+                            <input type="number" placeholder="weight" name="weight" required>
 
                             <div class="clearfix">
                                 <button type="submit" class="signupbtn">가입하기</button>
