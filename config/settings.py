@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'triceps',
+    'vrksasana',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'triceps',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,24 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
+
+LOGGING = {
+    'version':1,
+    'disable_existing_loggers': False,
+    'handlers':{
+        'console':{
+            'level': 'DEBUG',
+            'class':'logging.StreamHandler',
+        }
+    },
+    'loggers':{
+        'django.db.backends':{
+            'handlers':['console'],
+            'level': 'DEBUG',
+        },
+     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -129,7 +148,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / 'static'
 ]
 
 # Default primary key field type
