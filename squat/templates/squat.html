@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}스쿼트{% endblock %}
+
+{% block content %}
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                </div>
+                    <div class = "squat">
+                        <p>일단 출력되는걸 보고싶어 아무말 대잔치</p>
+                    
+                        <button class = '시작'>시작</button>
+                        <button class = '종료'>종료</button>
+                        <button class = '일시정지'>일시정지</button>
+
+                        <style>
+                            .시작{
+                                position: absolute;
+                                right: 400px;
+                            }
+                            .일시정지{
+                                position: absolute;
+                                right: 290px;
+                            }
+                            .종료{
+                                position: absolute;
+                                right: 210px;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
