@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'triceps',
     'vrksasana',
     'squat',
+    'pullup',
+    'shoulder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
