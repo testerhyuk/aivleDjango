@@ -6,11 +6,26 @@
 {% block content %}
         <!-- Product section-->
         <section class="py-5">
+            <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+            <button class="app_btn" type="button" onclick="init()">시작</button>
+            
             <div class="container px-4 px-lg-5 my-5">
-                <button type="button" onclick="init()">Start</button>
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><iframe width="560" height="315" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                    <div class="col-md-6">
+                        <div class="col-md-6" style = "float:left; margin-right:10px;"><iframe width="624" height="351" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <div style="width:624px; height:351px; float:left; padding-top:0px; font-size:20px; ">
+                            
+                            <p><strong>시티드 숄더 프레스란</strong><br>
+                            어깨 전체 중 전면, 측면, 후면 삼각근을<br>
+                            이용한 운동 (전면 삼각근을 가장 많이 사용)<br>
+                            추천 루틴 : 3~5세트, 세트 당 10~20개</p>
+                            <p><strong>주의점</strong><br>
+                             1.허리를 과하게 꺾는 자세<br>
+                             2.덤벨을 들었을 때 팔이 앞으로 기울어져 있는 경우<br>
+                             3.팔꿈치 보다 손목이 벌어진 경우<br>
+                             4.손목이 팔꿈치보다 안쪽으로 들어온 경우</p>
+
+                        </div>
+                        <div class="col-md-6">
                         <div><canvas id="canvas"></canvas></div>
                         <div id="label-container"></div>
                         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -57,14 +72,32 @@
                                 await predict();
                                 window.requestAnimationFrame(loop);
                             }
-
+                            var status = "Ready"
+                            var count = 0
                             async function predict() {
                                 // Prediction #1: run input through posenet
                                 // estimatePose can take in an image, video or canvas html element
                                 const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
                                 // Prediction 2: run input through teachable machine classification model
                                 const prediction = await model.predict(posenetOutput);
+                                if(prediction[0].probability.toFixed(2)>=0.90){
+                                    if(status=="UP"){
+                                        count++
+                                        if (count <= 10){
+                                            var audio = new Audio('/static/assets/audio/' + count + '.mp3')
+                                            audio.play()
+                                        } else if(count == 11){
+                                            var audio = new Audio("{% static 'assets/audio/finish.mp3' %}")
+                                            audio.play()
+                                        }
+                                    }
+                                }
 
+                                    status = "Ready"
+                                    
+                                } else if(prediction[1].probability.toFixed(2)==1.00){
+                                    status = "UP"
+                                }
                                 for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
