@@ -40,23 +40,24 @@
                         <div id="id01" class="modal">
   
                             <form class="modal-content animate" action="" method="post">
-                              <div class="imgcontainer">
-                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                              </div>
-                          
-                              <div class="container">
-                                <label for="uname"><b>아이디</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required>
-                          
-                                <label for="psw"><b>비밀번호</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
-                                  
-                                <button type="submit">로그인</button>
-                              </div>
-                          
-                              <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
-                              </div>
+                                {% csrf_token %}
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                </div>
+                            
+                                <div class="container">
+                                    <label for="uname"><b>아이디</b></label>
+                                    <input type="text" placeholder="Enter Username" name="uname" required>
+                            
+                                    <label for="psw"><b>비밀번호</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw" required>
+                                    
+                                    <button type="submit">로그인</button>
+                                </div>
+                            
+                                <div class="container" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
+                                </div>
                             </form>
                         </div>
                         
@@ -72,17 +73,17 @@
                             <div class="container2">
                             <h1>회원가입</h1>
                             <hr class=regist_line>
-                            <label for="userid"><b>아이디</b></label>
-                            <input type="text" placeholder="Enter username" name="userid" required>
+                            <label for="member_id"><b>아이디</b></label>
+                            <input type="text" placeholder="Enter username" name="member_id" required>
 
                             <label for="email"><b>이메일</b></label>
                             <input type="text" placeholder="Enter Email" name="email" required>
 
-                            <label for="name"><b>성명</b></label>
-                            <input type="text" placeholder="Enter name" name="name" required>
+                            <label for="member_name"><b>성명</b></label>
+                            <input type="text" placeholder="Enter name" name="member_name" required>
 
-                            <label for="psw2"><b>비밀번호</b></label>
-                            <input type="text" placeholder="Enter Password" name="passwd" required>
+                            <label for="psw_rg"><b>비밀번호</b></label>
+                            <input type="text" placeholder="Enter Password" name="psw_rg" required>
 
                             <label for="phone"><b>번호</b></label>
                             <input type="text" placeholder="010-0000-0000" name="phone" required>
