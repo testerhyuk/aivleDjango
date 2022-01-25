@@ -5,21 +5,24 @@
 
 {% block content %}
         <!-- Product section-->
-
-        <div>Teachable Machine Pose Model</div>
+    <div class="py-5">
         <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
         <button class="app_btn" type="button" onclick="init()">시작</button>
-        <div><canvas id="canvas"></canvas></div>
-        <div id="label-container"></div>
         
         <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center py-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
             <!-- 유튜브 영상 -->
-            <div class="col-md-6"><iframe width="560" height="315" src="https://www.youtube.com/embed/nWhS28U6bCY" 
+            <div class="col-md-6"><iframe width="560" height="430" src="https://www.youtube.com/embed/nWhS28U6bCY" 
                 title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe></div>
+                <!-- HTML5 에서 동적인 기능을 수행할 수 있는 canvas, 학습한 모델에 반응하여 웹캠이 켜질 공간 -->
+                <div class="col-md-6"><canvas id="canvas"></canvas></div>
+                <div id="label-container"></div>
+
             </div>
         </div>
+    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
@@ -43,7 +46,7 @@
                 maxPredictions = model.getTotalClasses();
         
                 // Convenience function to setup a webcam
-                const size = 200;
+                const size = 430;
                 const flip = true; // whether to flip the webcam
                 webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
                 await webcam.setup(); // request access to the webcam
