@@ -74,7 +74,7 @@
                                         count++
 
                                         if (count <= 10){
-                                            var audio = new Audio("{% static 'assets/audio/1.mp3' %}")
+                                            var audio = new Audio('/static/assets/audio/' + count + '.mp3')
                                             audio.play()
                                         } else if(count == 11){
                                             var audio = new Audio("{% static 'assets/audio/finish.mp3' %}")
@@ -86,7 +86,7 @@
                                     status = "push_down"
                                 } else if(prediction[2].probability.toFixed(2) == 1.00){
                                     if(status == "push_down" || status == "stand"){
-                                        var audio = new Audio('./pull.mp3')
+                                        var audio = new Audio("{% static 'assets/audio/push_down.mp3' %}")
                                         audio.play()
                                     }
                                     status = "pull"
