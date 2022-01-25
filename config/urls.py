@@ -24,4 +24,5 @@ urlpatterns = [
     path('vrksasana/', include('vrksasana.urls')),
     path('squat/', include('squat.urls')),
     path('pullup/', include('pullup.urls')),
+    path('shoulder/', include('shoulder.urls')),
 ]
