@@ -87,11 +87,11 @@ DATABASES = {
         'NAME': 'aivle3',
         'USER': 'aivle3',
         'PASSWORD': '54321',
-        'HOST': '15.164.153.191',
+        'HOST': '13.125.52.234',
         'PORT': 3306
     }
 }
-
+DATABASE_ROUTERS = ['pullup.router.DBRouter']
 #DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 
 LOGGING = {
