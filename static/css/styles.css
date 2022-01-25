@@ -11927,3 +11927,15 @@ to {transform: scale(1)}
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
     }
+
+/* app btn */
+.app_btn {
+  margin: 10px;
+  width: 100px;
+  padding: 10px 18px;
+  background-color: #f44336;
+  float: right;
+  position: relative;
+  bottom: 10px;
+  right: 325px;
+}

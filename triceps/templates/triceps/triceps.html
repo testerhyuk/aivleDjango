@@ -8,11 +8,12 @@
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <button type="button" onclick="init()">Start</button>
+                <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+                <button class="app_btn" type="button" onclick="init()">시작</button>
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><iframe width="560" height="315" src="https://www.youtube.com/embed/cF9NczPANp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                     <div class="col-md-6">
-                        <div><canvas id="canvas"></canvas></div>
+                        <div><canvas id="canvas" width="590" height="450" style="border-style: solid; border-color: black; border-width:1px;"></canvas></div>
                         <div id="label-container"></div>
                         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
