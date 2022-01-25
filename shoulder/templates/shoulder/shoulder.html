@@ -74,16 +74,9 @@
                                 if(prediction[0].probability.toFixed(2)>=0.90){
                                     if(status=="UP"){
                                         count++
-                                        if (count <= 10){
-                                            var audio = new Audio('/static/assets/audio/' + count + '.mp3')
-                                            audio.play()
-                                        if(count == 10){
-                                            var audio = new Audio("{% static 'assets/audio/finish.mp3' %}")
-                                            udio.play()
-                                        }
-                                        }
+                                        var audio = new Audio('/static/assets/audio/' + count%10 + '.mp3')
+                                        audio.play()
                                     }
-                                
 
                                 status = "Ready"
                                     
