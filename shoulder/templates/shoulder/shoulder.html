@@ -11,23 +11,12 @@
             
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                        <div class="col-md-6" style = "float:left; margin-right:10px;"><iframe width="624" height="351" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                        <div style="width:624px; height:351px; float:left; padding-top:0px; font-size:20px; ">
-                            
-                            <p><strong>시티드 숄더 프레스란</strong><br>
-                            어깨 전체 중 전면, 측면, 후면 삼각근을<br>
-                            이용한 운동 (전면 삼각근을 가장 많이 사용)<br>
-                            추천 루틴 : 3~5세트, 세트 당 10~20개</p>
-                            <p><strong>주의점</strong><br>
-                             1.허리를 과하게 꺾는 자세<br>
-                             2.덤벨을 들었을 때 팔이 앞으로 기울어져 있는 경우<br>
-                             3.팔꿈치 보다 손목이 벌어진 경우<br>
-                             4.손목이 팔꿈치보다 안쪽으로 들어온 경우</p>
+                    <div class="col-md-6" ><iframe width="540" height="450" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="col-md-6">
 
-                        </div>
-                        <div class="col-md-6">
-                        <div><canvas id="canvas"></canvas></div>
+                        <div><canvas id="canvas" width="590" height="450" style="margin-top: 0px; border-style: solid; border-color: black; border-width:1px;"></canvas></div>
                         <div id="label-container"></div>
+
                         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
                         <script type="text/javascript">
@@ -50,16 +39,17 @@
                                 maxPredictions = model.getTotalClasses();
 
                                 // Convenience function to setup a webcam
-                                const size = 450;
+                                const size_w = 590;
+                                const size_h = 450;
                                 const flip = true; // whether to flip the webcam
-                                webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+                                webcam = new tmPose.Webcam(size_w, size_h, flip); // width, height, flip
                                 await webcam.setup(); // request access to the webcam
                                 await webcam.play();
                                 window.requestAnimationFrame(loop);
 
                                 // append/get elements to the DOM
                                 const canvas = document.getElementById("canvas");
-                                canvas.width = size; canvas.height = size;
+                                canvas.width = size_w; canvas.height = size_h;
                                 ctx = canvas.getContext("2d");
                                 labelContainer = document.getElementById("label-container");
                                 for (let i = 0; i < maxPredictions; i++) { // and class labels
@@ -74,6 +64,7 @@
                             }
                             var status = "Ready"
                             var count = 0
+
                             async function predict() {
                                 // Prediction #1: run input through posenet
                                 // estimatePose can take in an image, video or canvas html element
@@ -83,26 +74,20 @@
                                 if(prediction[0].probability.toFixed(2)>=0.90){
                                     if(status=="UP"){
                                         count++
-                                        if (count <= 10){
-                                            var audio = new Audio('/static/assets/audio/' + count + '.mp3')
-                                            audio.play()
-                                        } else if(count == 11){
-                                            var audio = new Audio("{% static 'assets/audio/finish.mp3' %}")
-                                            audio.play()
-                                        }
+                                        var audio = new Audio('/static/assets/audio/' + count%10 + '.mp3')
+                                        audio.play()
                                     }
-                                }
 
-                                    status = "Ready"
+                                status = "Ready"
                                     
                                 } else if(prediction[1].probability.toFixed(2)==1.00){
                                     status = "UP"
                                 }
-                                for (let i = 0; i < maxPredictions; i++) {
+                                /*for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                                     labelContainer.childNodes[i].innerHTML = classPrediction;
-                                }
+                                }*/
 
                         // finally draw the poses
                                 drawPose(pose);
@@ -120,6 +105,19 @@
                                 }
                             }
                         </script>
+                    </div>
+                    <hr>
+                    <div style="font-size:20px;">
+                        
+                        <p><strong>시티드 숄더 프레스란</strong><br>
+                        <ul><li>어깨 전체 중 전면, 측면, 후면 삼각근을 이용한 운동 (전면 삼각근을 가장 많이 사용)</li>
+                        <li>추천 루틴 : 3~5세트, 세트 당 10~20개</li></p>
+                        <p><strong>주의점</strong><br>
+                        <ol><li>허리를 과하게 꺾는 자세</li>
+                        <li>덤벨을 들었을 때 팔이 앞으로 기울어져 있는 경우</li>
+                        <li>팔꿈치 보다 손목이 벌어진 경우</li>
+                        <li>손목이 팔꿈치보다 안쪽으로 들어온 경우</ol></li></p>
+
                     </div>
                 </div>
             </div>
