@@ -7,12 +7,20 @@
         <!-- Product section-->
 
         <div>Teachable Machine Pose Model</div>
-        <button type="button" onclick="init()">Start</button>
-        <button class="close" type="button" onclick="init()">close</button>
+        <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+        <button class="app_btn" type="button" onclick="init()">시작</button>
         <div><canvas id="canvas"></canvas></div>
         <div id="label-container"></div>
-        <!-- 유튜브 영상 -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/nWhS28U6bCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center py-5">
+            <!-- 유튜브 영상 -->
+            <div class="col-md-6"><iframe width="560" height="315" src="https://www.youtube.com/embed/nWhS28U6bCY" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
         <script type="text/javascript">
@@ -21,7 +29,7 @@
         
             // the link to your model provided by Teachable Machine export panel
             // 모델 주소 나중에 수정할 것.
-            const URL = "./my_model/";
+            const URL =  "{% static 'assets/pullup_model/' %}";
             let model, webcam, ctx, labelContainer, maxPredictions;
         
             async function init() {
@@ -87,12 +95,13 @@
                 }
             }
         </script>
-        <section class="py-5">
+         
+        {% comment %} <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
                 </div>
             </div>
-        </section>
+        </section> {% endcomment %}
 {% endblock %}
