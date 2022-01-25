@@ -11874,7 +11874,7 @@ width: 30%; /* Could be more or less, depending on screen size */
 .close, .close2{
 position: absolute;
 right: 25px;
-top: 0;
+top: -25px;
 color: #000;
 font-size: 35px;
 font-weight: bold;
