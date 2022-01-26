@@ -74,6 +74,12 @@
                             if (prediction[i].className == "vrk left" && prediction[i].probability > 0.7){
                                 vrkCnt++;
                             }
+                        if (vrkCnt >= 100) {
+                            console.log('finish');
+                            var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
+                            audio.play();
+                            audio.pause();
+                        }
                         }
 
                         // finally draw the poses
@@ -90,11 +96,6 @@
                                 tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
                             }
                         }
-                    }
-                    if (vrkCnt >= 20) {
-                        console.log('finish');
-                        var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
-                        audio.play();
                     }
                 </script>
             </div>
