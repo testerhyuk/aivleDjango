@@ -5,8 +5,7 @@ from history.models import History
 
 # Create your views here.
 def vrksasana(request):
-    return render(
-        request, 'vrksasana/vrksasana.html')
+    return render(request, 'vrksasana/vrksasana.html')
     
 def update_count(request):
     if request.method == 'POST':
