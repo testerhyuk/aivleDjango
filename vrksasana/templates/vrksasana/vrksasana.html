@@ -85,11 +85,11 @@
                         } else if(prediction[0].probability.toFixed(2) > 0.70){
                             vrkCnt++
                             if (status == "vrk"){
-                                if (count <=19){
-                                    var audio = new Audio("/static/assets/audio/vrkstand.mp3}")
+                                if (vrkCnt <= 19){
+                                    var audio = new Audio("{% static 'assets/audio/vrkstand.mp3' %}")
                                     audio.play()
-                                } else if(count == 20){
-                                    var audio = new Audio("{% static 'assets/audio/crkfinish.mp3' %}")
+                                } else if(vrkCnt > 20){
+                                    var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
                                     audio.play()
                                 }
                                 

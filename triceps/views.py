@@ -7,12 +7,9 @@ def triceps(request):
 
 def update_count(request):
     if request.method == 'POST':
+        member_id = request.session['member_id']
         triceps = request.POST.get('ud_count')
-        print(triceps)
-        t = History(triceps=triceps)
+        t = History(triceps=triceps, member_id=Member.objects.get(member_id = member_id))
         t.save()
 
-        member_id = request.session['member_id']
-        m = History(member_id=Member.objects)
-        m.save()
     return redirect('home')
