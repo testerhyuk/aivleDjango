@@ -52,6 +52,9 @@
                                 for (let i = 0; i < maxPredictions; i++) { // and class labels
                                     labelContainer.appendChild(document.createElement("div"));
                                 }
+
+                                //countshow = document.getElementById("count-show");
+                                //countshow.appendChild(document.createElement("div"));
                             }
 
                             async function loop(timestamp) {
@@ -73,29 +76,30 @@
                                 if(prediction[0].probability.toFixed(2)>=0.90){
                                     if(status=="squat"){
                                         count++
-                                        if (count <= 10){
+                                        if (count < 10){
                                             var audio = new Audio('/static/assets/audio/' + count + '.mp3')
                                             audio.play()
+                                        }
                                         if(count == 10){
                                             var audio = new Audio("{% static 'assets/audio/finish.mp3' %}")
                                             audio.play()
                                         }
-                                        }
                                     }
                                 
-
-                                status = "stand"
+                                    status = "stand"
                                     
                                 } else if(prediction[1].probability.toFixed(2)==1.00){
                                     status = "squat"
                                 }
-
+                                
+                                //countshow.innerHTML = count + "회"
+                                
                                 for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                                     labelContainer.childNodes[i].innerHTML = classPrediction;
                                 }
-
+                                
                                 // finally draw the poses
                                 drawPose(pose);
                             }
