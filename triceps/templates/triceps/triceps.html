@@ -7,12 +7,15 @@
 
         <!-- Product section-->
         <section class="py-5">
+            {% if request.session.member_id %}
             <form method='post' action='../update_count/'>
                 {% csrf_token %}
-                <input type="hidden" id='ud_count' value=''>
-                <button class="app_btn" type="submit" onclick="ext()">종료</button>
+                <input type="hidden" id='ud_count' name='ud_count' value='' onclick="ext()">
+                <button class="app_btn" type="submit">종료</button>
             </form>
-            {% comment %} <button class="app_btn" type="button" onclick="window.location.reload()">종료</button> {% endcomment %}
+            {% else %}
+            <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+            {% endif %}
             <button class="app_btn" type="button" onclick="init()">시작</button>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
