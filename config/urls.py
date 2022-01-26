@@ -26,4 +26,5 @@ urlpatterns = [
     path('pullup/', include('pullup.urls')),
     path('shoulder/', include('shoulder.urls')),
     path('history/', include('history.urls')),
+    path('member/', include('member.urls')),
 ]

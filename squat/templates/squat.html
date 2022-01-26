@@ -6,13 +6,16 @@
 {% block content %}
         <!-- Product section-->
         <section class="py-5">
+            <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+            <button class="app_btn" type="button" onclick="init()">시작</button>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><iframe width="540" height="450" src="https://www.youtube.com/embed/Fk9j6pQ6ej8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                     <div class="col-md-6">
-                        <div><canvas id="canvas" width="590" height="450" style="border-style: solid; border-color: black; border-width:1px;"></canvas></div>
+                        
+                        <div><canvas id="canvas" style="margin:78px 0 0 0;" width="590" height="450" style="border-style: solid; border-color: black; border-width:1px;"></canvas></div>
                         <div id="label-container"></div>
-                        <div><button type="button" onclick="init()" width=5 height=5>시작</button></div>
+
                         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
                         <script type="text/javascript">
@@ -20,7 +23,7 @@
                             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
                             // the link to your model provided by Teachable Machine export panel
-                            const URL = "https://teachablemachine.withgoogle.com/models/ZqzRaKYBF/";
+                            const URL = "{% static 'assets/squat_model/' %}";
                             let model, webcam, ctx, labelContainer, maxPredictions;
 
                             async function init() {
@@ -86,7 +89,22 @@
                                 }
                             }
                         </script>
-
+                    </div>
+                    <hr>
+                    <div>
+                        <h4><strong>초보자도 쉽게 시작할 수 있는 스쿼트</strong></h4><br>
+                        <p>스쿼트는 다른 보조기구가 없이도 초보자들이 가장 쉽게 접할 수 있고, 때와 장소를 가리지 않고 단련할 수 있는 운동입니다.</p>
+                        <p>대표적인 하체 운동으로 알려져 있지만 하체 뿐만 아니라 코어, 힙 및 상체의 근력 향상에도 도움을 주며, 다이어트에도 아주 효과적입니다.</p>
+                        <p>스쿼트를 통해 허벅지 둔근을 단련하면 혈류가 원활해져 노폐물 제거에 효과적이고, 또한 온몸으로 영양분이 잘 공급될 수 있도록 하는 펌프 역할을 합니다.</p>
+                        <p>나아가, 덤벨과 바벨을 함께 이용해서 복합적인 운동 효과를 꾀할 수도 있는 스쿼트. 지금 운동하러 가보실까요?</p>
+                        <hr>
+                        <h4></strong>주의점</strong></h4>
+                        <ul>
+                            <p><li>중심이 앞으로 쏠리거나 뒤꿈치가 들려서는 안 된다. 몸의 중심은 발 가운데에!</li></p>
+                            <p><li>허리는 오목한 상태가 되어야 한다. 볼록한 것은 복근에 힘이 들어가지 않은 것!</li></p>
+                            <p><li>11자 자세는 고관절에 무리를 준다. 발은 5~15도가량 바깥을 향하게!</li></p>
+                            <p><li>무릎이 발을 넘지 말아야 하는 것은 잘못된 상식. 위 자세가 완벽하면 신경쓰지 않아도 된다.</li></p>
+                        </ul>
                     </div>
                 </div>
             </div>

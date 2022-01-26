@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'pullup',
     'shoulder',
     'history',
+    'member',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,7 +94,10 @@ DATABASES = {
         'PORT': 3306
     }
 }
-DATABASE_ROUTERS = ['pullup.router.DBRouter']
+DATABASE_ROUTERS = [
+    'pullup.router.DBRouter',
+    'member.router.DBRouter',
+]
 #DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 
 LOGGING = {
