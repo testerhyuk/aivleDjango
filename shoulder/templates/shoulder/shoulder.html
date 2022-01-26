@@ -6,9 +6,16 @@
 {% block content %}
         <!-- Product section-->
         <section class="py-5">
+            {% if request.session.member_id %}
+            <form method='post' action='../update_count/' onsubmit='return ext()'>
+                {% csrf_token %}
+                <input type="hidden" id='ud_count' name='ud_count' value=''>
+                <button class="app_btn" type="submit">종료</button>
+            </form>
+            {% else %}
             <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+            {% endif %}
             <button class="app_btn" type="button" onclick="init()">시작</button>
-            
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6" ><iframe width="540" height="450" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -103,6 +110,11 @@
                                         tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
                                     }
                                 }
+                            }
+                            async function ext(){
+                                webcam.pause()
+                                document.getElementById('ud_count').value = count
+                                return true;
                             }
                         </script>
                     </div>
