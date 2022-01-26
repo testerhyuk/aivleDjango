@@ -17,7 +17,6 @@
                 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
                 <script type="text/javascript">
-                    let vrkCnt = 0;
                     // More API functions here:
                     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -60,26 +59,29 @@
                         window.requestAnimationFrame(loop);
                     }
 
+                    var status = 'default';
+                    var count = 0;
+
                     async function predict() {
                         // Prediction #1: run input through posenet
                         // estimatePose can take in an image, video or canvas html element
                         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
                         // Prediction 2: run input through teachable machine classification model
                         const prediction = await model.predict(posenetOutput);
-
+                        if(prediction[0].probability.toFixed(2) >= 0.90){
+                            if(status == "vrk left"){
+                                count++
+                                if (count == 20){
+                                    var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
+                                    audio.play()
+                                }
+                            }
+                        status = "default"
+                        }
                         for (let i = 0; i < maxPredictions; i++) {
                             const classPrediction =
                                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                             labelContainer.childNodes[i].innerHTML = classPrediction;
-                            if (prediction[i].className == "vrk left" && prediction[i].probability > 0.7){
-                                vrkCnt++;
-                            }
-                        if (vrkCnt >= 100) {
-                            console.log('finish');
-                            var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
-                            audio.play();
-                            audio.pause();
-                        }
                         }
 
                         // finally draw the poses
