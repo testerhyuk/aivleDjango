@@ -60,7 +60,7 @@
                     }
 
                     var status = 'default';
-                    var vrkCnt = 0;
+                    var count = 0;
 
                     async function predict() {
                         // Prediction #1: run input through posenet
@@ -68,16 +68,15 @@
                         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
                         // Prediction 2: run input through teachable machine classification model
                         const prediction = await model.predict(posenetOutput);
-                        if(prediction[0].probability.toFixed(2) > 0.70){
+                        if(prediction[0].probability.toFixed(2) >= 0.90){
                             if(status == "vrk left"){
-                                vrkCnt++
-
-                                if (vrkCnt == 20){
+                                count++
+                                if (count == 20){
                                     var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
                                     audio.play()
                                 }
                             }
-                            status = "default"
+                        status = "default"
                         }
                         for (let i = 0; i < maxPredictions; i++) {
                             const classPrediction =
