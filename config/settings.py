@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'squat',
     'pullup',
     'shoulder',
+    'history',
     'member',
     'django.contrib.admin',
     'django.contrib.auth',
