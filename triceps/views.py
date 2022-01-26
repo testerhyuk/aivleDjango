@@ -8,6 +8,7 @@ def triceps(request):
 def update_count(request):
     if request.method == 'POST':
         triceps = request.POST.get('ud_count')
+        print(triceps)
         t = History(triceps=triceps)
         t.save()
 
