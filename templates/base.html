@@ -36,7 +36,7 @@
                         <!-- Login-->
                         {% if request.session.member_id %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'member:logout' %}">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">{{ request.session.member_name}}님</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../history/history/">{{ request.session.member_name}}님</a></li>
 
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</a></li>
