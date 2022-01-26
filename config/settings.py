@@ -97,6 +97,7 @@ DATABASES = {
 DATABASE_ROUTERS = [
     'pullup.router.DBRouter',
     'member.router.DBRouter',
+    'history.router.DBRouter',
 ]
 #DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 

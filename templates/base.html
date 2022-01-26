@@ -34,76 +34,94 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#about">About</a></li>
                         
                         <!-- Login-->
+                        {% if request.session.member_id %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'member:logout' %}">로그아웃</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../history/history/">{{ request.session.member_name}}님</a></li>
+
+                        {% else %}
                         <li class="nav-item"><a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</a></li>
                         <div id="id01" class="modal">
   
-                            <form class="modal-content animate" action="" method="post">
-                              <div class="imgcontainer">
-                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                              </div>
-                          
-                              <div class="container">
-                                <label for="uname"><b>아이디</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required>
-                          
-                                <label for="psw"><b>비밀번호</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
-                                  
-                                <button type="submit">로그인</button>
-                              </div>
-                          
-                              <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
-                              </div>
+                            <form class="modal-content animate" action="/member/login/" method="post">
+                                {% csrf_token %}
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                </div>
+                            
+                                <div class="container">
+                                    {% for message in messages%}
+                                    <div class="alert alert-{{ message.tags }}">
+                                        {{ message.message}}
+                                    </div>
+                                    {% endfor %}
+                                    <label for="member_id"><b>아이디</b></label>
+                                    <input type="text" placeholder="Enter Username" name="member_id" required>
+                            
+                                    <label for="psw_rg"><b>비밀번호</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw_rg" required>
+                                    
+                                    <button type="submit">로그인</button>
+                                </div>
+                            
+                                <div class="container" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
+                                </div>
                             </form>
                         </div>
                         
                         <!-- Register -->
                         <li class="nav-item"><a class="nav-link" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</a></li>
                         <div id="id02" class="modal2">
-                        <form class="modal-content2 animate2" action="">
+                        <form class="modal-content2 animate2" method="post" action="/member/register/">
+                            {% csrf_token %}
                             <div class="imgcontainer2">
                                 <span onclick="document.getElementById('id02').style.display='none'" class="close2" title="Close Modal2">&times;</span>
                             </div>
 
                             <div class="container2">
-                            <h1>회원가입</h1>
-                            <hr class=regist_line>
-                            <label for="userid"><b>아이디</b></label>
-                            <input type="text" placeholder="Enter username" name="id" required>
+                                <h1>회원가입</h1>
+                                <hr class=regist_line>
+                                <label for="member_id"><b>아이디</b></label>
+                                <input type="text" placeholder="아이디를 입력하세요" name="member_id" required>
 
-                            <label for="email"><b>이메일</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required>
+                                <label for="email"><b>이메일</b></label>
+                                <input type="text" placeholder="이메일을 입력하세요" name="email" required>
 
-                            <label for="name"><b>성명</b></label>
-                            <input type="text" placeholder="Enter name" name="name" required>
+                                <label for="member_name"><b>성명</b></label>
+                                <input type="text" placeholder="이름을 입력하세요" name="member_name" required>
 
-                            <label for="psw2"><b>비밀번호</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw2" required>
+                                <label for="psw_rg"><b>비밀번호</b></label>
+                                <input type="text" placeholder="비밀번호를 입력하세요" name="psw_rg" required>
 
-                            <label for="phone"><b>번호</b></label>
-                            <input type="text" placeholder="Enter phone" name="phone" required>
+                                <label for="phone"><b>번호</b></label>
+                                <input type="text" placeholder="010-0000-0000" name="phone" required>
 
-                            <label for="height"><b>키</b></label>
-                            <input type="text" placeholder="height" name="height" required>
+                                <label for="height"><b>키</b></label>
+                                <input type="text" placeholder="키를 입력하세요" name="height" required>
 
-                            <label for="weight"><b>몸무게</b></label>
-                            <input type="text" placeholder="weight" name="weight" required>
+                                <label for="weight"><b>몸무게</b></label>
+                                <input type="text" placeholder="몸무게를 입력하세요" name="weight" required>
 
-                            <div class="clearfix">
-                                <button type="submit" class="signupbtn">가입하기</button>
-                                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">취소</button>
-                            </div>
+                                <div class="clearfix">
+                                    <button type="submit" class="signupbtn">가입하기</button>
+                                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">취소</button>
+                                </div>
                             </div>
                         </form>
+                        </div>
+                        {% endif %}
                         </div>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead"></header>
-        
+        <header class="masthead">
+            <div class="container">
+        {% block masthead %}
+        {% endblock %}
+            </div>
+        </header>
         {% block content%}
         {% endblock%}
         
@@ -134,8 +152,6 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-        {% block extra-script %}{% endblock %}
 
     </body>
 </html>

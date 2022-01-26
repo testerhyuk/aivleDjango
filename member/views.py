@@ -30,18 +30,27 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        memberid = request.POST.get('memberid')
-        pswrg = request.POST.get('pswrg')
+        member_id = request.POST.get('member_id')
+        psw_rg = request.POST.get('psw_rg')
 
         try:
-            m = Member.objects.get(memberid=memberid, pswrg=pswrg)
+            m = Member.objects.get(member_id=member_id, psw_rg=psw_rg)
         except:
             messages.info(request, '아이디 또는 비밀번호가 틀렸습니다.')
             return redirect('home')
         else:
-            request.session['memberid'] = m.memberid
-            request.session['pswrg'] = m.pswrg
+            request.session['member_id'] = m.member_id
+            request.session['member_name'] = m.member_name
 
         return redirect('home')
     else:
         return redirect('home')
+
+
+def logout(request):
+    del request.session['member_id']
+    del request.session['member_name']
+
+    request.session.flush()
+
+    return redirect('home')
