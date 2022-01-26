@@ -7,9 +7,9 @@
         <!-- Product section-->
         <section class="py-5">
             {% if request.session.member_id %}
-            <form method='post' action='../update_count/'>
+            <form method='post' action='../update_count/' onsubmit='return ext()'>
                 {% csrf_token %}
-                <input type="hidden" id='ud_count' name='ud_count' value='' onclick="ext()">
+                <input type="hidden" id='ud_count' name='ud_count' value=''>
                 <button class="app_btn" type="submit">종료</button>
             </form>
             {% else %}
@@ -114,6 +114,7 @@
                             async function ext(){
                                 webcam.pause()
                                 document.getElementById('ud_count').value = count
+                                return true;
                             }
                         </script>
                     </div>
