@@ -1,12 +1,11 @@
 from django.db import models
+from django.db.models.fields import IntegerField, DateField
 
 class Squat(models.Model):
-    year = models.IntegerField()
-    month = models.IntegerField()
-    day = models.DateField()
-    cnt = models.IntegerField()
-    time = models.TimeField()
-    
+    exercise_date = DateField()
+    count = IntegerField()
+    # member_id = models.OneToOneField(Member, on_delete=models.CASCADE, null=True
+
     class Meta:
-        db_table = "train_data"
+        db_table = "squat"
         managed = False
