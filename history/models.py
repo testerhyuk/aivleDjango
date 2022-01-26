@@ -1,8 +1,9 @@
 from django.db import models
+from member.models import Member
 
 # Create your models here.
 class History(models.Model):
-    name = models.CharField(max_length=50)
+    member_id = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)
     date = models.DateField(auto_now=True)
     triceps = models.IntegerField(null=True)
     shoulder = models.IntegerField(null=True)
