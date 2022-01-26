@@ -5,22 +5,44 @@
 
 {% block content %}
     <!-- Product section-->
-    <div class="py-5">
+    <div class="py-5 offset-1">
         <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
         <button class="app_btn" type="button" onclick="init()">시작</button>
-        
-        <div class="container px-4 px-lg-5 my-5">
+
+        <div class="container px-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
             <!-- 유튜브 영상 -->
             <div class="col-md-6"><iframe width="560" height="430" src="https://www.youtube.com/embed/nWhS28U6bCY" 
                 title="YouTube video player" frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen></iframe></div>
-                <!-- HTML5 에서 동적인 기능을 수행할 수 있는 canvas, 학습한 모델에 반응하여 웹캠이 켜질 공간 -->
+                <!-- HTML5 에서 동적인(그래픽) 기능을 수행할 수 있는 canvas, 학습한 모델에 반응하여 웹캠이 켜질 공간 -->
                 <div class="col-md-6" style="padding:0px; width:430px; height:430px; background-color:gray;">
                     <canvas id="canvas">호환되지 않는 브라우저입니다.</canvas>
                 </div>
                 <div id="label-container"></div>
+                <div id="count-show"></div>
+
+                <div>
+                    <br><br>
+                    <div style="display:inline-block; vertical-align:top; margin-right: 30px; margin-left: 20px;">
+                        <img class="rounded-pill" width="300" height="300" src="{% static 'assets/img/description/pullup_show.jpg' %}"/>
+                    </div>
+                    <div style="display:inline-block;">
+                        <h3>풀업(Pull-up)</h3>
+                        <hr>
+                        <p style="font-size:16px;">
+                            스쿼트가 하체 전반을 단련한다면 턱걸이는 상체 전반을 단련시킨다.<br>
+                            <br>
+                            하체 운동의 시작과 끝이 스쿼트라면, 상체 운동은 벤치프레스나 딥스 같은 밀기 운동 외에는<br>
+                            턱걸이라고 봐도 무방하다. 대개 턱걸이를 통해 상완이두근과 등근육, 전완이 발달되며 기본적으로<br>
+                            매달리는 힘이 없다면 상완 이두나 등 또한 힘을 써 볼 기회도 없기 때문에 철봉 바를 강하게 쥐는<br>
+                            전완근의 힘, 악력과 숄더패킹을 유지하기 위한 중하부 승모근의 힘이 받쳐줘야 한다.<br>
+                            <br>
+                            결국 상체 전반을 단련하는 셈. 특히 광배근을 단련하는 데에 이 운동만한 것이 없다고 전해진다.<br>
+                            광배근 발달에 최적인 운동인 만큼, 어깨와 등이 넓어지고 상체가 커보이는 효과를 가져온다.</p>
+                    </div>       
+                </div>
 
             </div>
         </div>
@@ -35,7 +57,7 @@
         // the link to your model provided by Teachable Machine export panel
         // 모델 주소 나중에 수정할 것.
         const URL =  "{% static 'assets/pullup_model/' %}";
-        let model, webcam, ctx, labelContainer, maxPredictions;
+        let model, webcam, ctx, labelContainer, maxPredictions, countshow;
     
         async function init() {
             const modelURL = URL + "model.json";
@@ -63,6 +85,9 @@
             for (let i = 0; i < maxPredictions; i++) { // and class labels
                 labelContainer.appendChild(document.createElement("div"));
             }
+
+            countshow = document.getElementById("count-show");
+            countshow.appendChild(document.createElement("div"));
         }
     
         async function loop(timestamp) {
@@ -70,20 +95,55 @@
             await predict();
             window.requestAnimationFrame(loop);
         }
-    
+        
+        var status = "standby"
+        var cnt = 0
+        
         async function predict() {
             // Prediction #1: run input through posenet
             // estimatePose can take in an image, video or canvas html element
             const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
-    
+            
+            // 음성 재생 부분 
+            // prediction[0]는 up(첫 번째 클래스) prediction[1]은 down(두 번째 클래스)
+            // setTimeout(function() {code_input}, 2000); 안되는거 같은데 확인 필요함.
+            if(prediction[0].probability.toFixed(2) > 0.90){
+                if(status == "down"){
+                    cnt++
+                    if (cnt <= 10){
+                        var audio = new Audio('/static/assets/audio_sub/' + cnt + '.mp3')
+                        audio.play()
+                    }
+                    else if(cnt == 11){
+                        var audio = new Audio("{% static 'assets/audio_sub/set_finish.mp3' %}")
+                        audio.play()
+                    }
+                }
+                status = "standby"
+            }
+            else if(prediction[1].probability.toFixed(2) == 1.00){
+                status = "down"
+            }/*
+            else if(prediction[2].probability.toFixed(2) == 1.00){
+                if(status == "up" || status == "standby"){
+                    var audio = new Audio("{% static 'assets/audio/push_down.mp3' %}")
+                    audio.play()
+                }
+                status = "down"
+            }*/
+
+            // cnt값 출력
+            countshow.innerHTML = cnt + "회"
+
+            // 클래스별 label 및 score 출력
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-    
+
             // finally draw the poses
             drawPose(pose);
         }
