@@ -37,7 +37,10 @@ def login(request):
             m = Member.objects.get(memberid=memberid, pswrg=pswrg)
         except:
             messages.info(request, '아이디 또는 비밀번호가 틀렸습니다.')
-            
+            return redirect('home')
+        else:
+            request.session['memberid'] = m.memberid
+            request.session['pswrg'] = m.pswrg
 
         return redirect('home')
     else:
