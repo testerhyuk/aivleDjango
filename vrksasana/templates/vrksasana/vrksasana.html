@@ -6,7 +6,11 @@
 {% block content %}
 <!-- Product section-->
 <section class="py-5">
-    <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
+    <form method='post' action='../update_count/'>
+        {% csrf_token %}
+        <input type="hidden" id='ud_count' name='vrksasana' value=''>
+        <button class="app_btn" type="submit" onclick="ext()">종료</button>
+    </form>
     <button class="app_btn" type="button" onclick="init()">시작</button>
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
@@ -59,8 +63,8 @@
                         window.requestAnimationFrame(loop);
                     }
 
-                    var status = 'default';
-                    var count = 0;
+                    var status = "default"
+                    var vrkCnt = 0
 
                     async function predict() {
                         // Prediction #1: run input through posenet
@@ -68,15 +72,14 @@
                         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
                         // Prediction 2: run input through teachable machine classification model
                         const prediction = await model.predict(posenetOutput);
-                        if(prediction[0].probability.toFixed(2) >= 0.90){
-                            if(status == "vrk left"){
-                                count++
-                                if (count == 20){
-                                    var audio = new Audio("{% static 'assets/audio/vrkfinish.mp3' %}")
-                                    audio.play()
-                                }
+                        if(prediction[1].probability.toFixed(2) == 1.00){
+                            status = "default"
+                        } else if(prediction[0].probability.toFixed(2) > 0.70){
+                            if (status == "vrk"){
+                                vrkCnt++
+                                var audio = new Audio("/static/assets/audio/vrkstand.mp3}")
+                                audio.play()
                             }
-                        status = "default"
                         }
                         for (let i = 0; i < maxPredictions; i++) {
                             const classPrediction =
@@ -99,6 +102,12 @@
                             }
                         }
                     }
+
+                    async function ext(){
+                        webcam.pause()
+                        document.getElementById('ud_count').value = count
+                    }
+                    
                 </script>
             </div>
         </div>
