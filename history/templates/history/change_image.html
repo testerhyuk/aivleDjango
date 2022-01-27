@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}운동 기록{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
+    <input type="submit" value="전송">
+</form>
+
+{% endblock %}

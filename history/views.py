@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Member
-from django.contrib.auth.hashers import check_password
+from .models import Member, History
 from django.contrib import messages
 
 
 # Create your views here.
-def history(request):
-    record = Member.objects.all()
+def info(request):
+    info = Member.objects.all()
         
     return render(
         request, 'history/history.html',

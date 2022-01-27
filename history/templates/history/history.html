@@ -6,24 +6,35 @@
 {% block content %}
 <!-- Product section-->
 <section class="py-5">
-    <!-- <h1>로그인한 회원의 운동 기록을 보여주는 페이지입니다.</h1> -->
-    <!-- <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
-    <button class="app_btn" type="button" onclick="init()">시작</button> -->
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-        {% if request.session.member_id %}
-        <h2>{{request.session.member_name}} 님 반갑습니다.</h2>
-        <!-- {% endif %} -->
+        {% comment %} {% if request.session.member_id %}
+        <h1>{{request.session.member_name}} 님 반갑습니다.</h1> {% endcomment %}
+        <h2>{{ request.session.member_name }}님 반갑습니다.</h2>
         <hr>
-
-        {{request.session.member_name}}
-            <!-- <td>{{i.date}}</td>
-            <td>{{i.triceps}}</td>
-            <td>{{i.shoulder}}</td>
-            <td>{{i.squat}}</td>
-            <td>{{i.pullup}}</td>
-            <td>{{i.vrksasana}}</td> -->
-        </tr>
+        <h4>나의 정보</h4>
+        이름 {{request.session.member_name}}</p>
+        이메일 {% for em in email %} {{ em }} {% endfor %}</p>
+        전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
+        키 {% for ht in height %} {{ ht }} {% endfor %}</p>
+        몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
+        {% comment %} BMI {{request.session.}}</p> {% endcomment %}
+        <hr>
+        <h4>운동 기록</h4>
+            <div class="text-center">
+                <table border="1">
+                    <th>트라이셉스</th>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>c</th>
+                    <th>d</th>
+                    {% for i in data %}
+                        <tr>
+                            
+                        </tr>
+                    {% endfor %}
+                </table>
+            
 
             <!-- <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
             <div class="col-md-6">
