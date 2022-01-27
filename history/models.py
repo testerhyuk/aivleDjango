@@ -5,11 +5,11 @@ from member.models import Member
 class History(models.Model):
     member_id = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)
     date = models.DateField(auto_now=True)
-    triceps = models.IntegerField(null=True)
-    shoulder = models.IntegerField(null=True)
-    squat = models.IntegerField(null=True)
-    pullup = models.IntegerField(null=True)
-    vrksasana = models.IntegerField(null=True)
+    triceps = models.IntegerField(default=0)
+    shoulder = models.IntegerField(default=0)
+    squat = models.IntegerField(default=0)
+    pullup = models.IntegerField(default=0)
+    vrksasana = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'history'
