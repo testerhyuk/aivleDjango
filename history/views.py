@@ -62,6 +62,11 @@ def change_image(request):
 def upload(request):
     if request.method == 'POST':
         form = ProfileCreationForm(request.POST, request.FILES)
+
+        member_id = request.session['member_id']
+        t = Profile(member_id=Member.objects.get(member_id = member_id))
+        if t:
+            t.delete
         if form.is_valid():
             profile = form.save(commit=False)
             member = Member.objects.get(member_id=request.session['member_id'])

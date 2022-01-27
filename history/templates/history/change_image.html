@@ -4,11 +4,18 @@
 {% block title %}운동 기록{% endblock %}
 
 {% block content %}
-<h4>프로필 사진 변경</h4>
-<form enctype="multipart/form-data" method="post" action="{% url 'history:upload' %}">
-    {% csrf_token %}
-    <input type="file" name="file">
-    <input type="submit" value="전송">
-</form>
 
+<div class="container" style="text-align: center;">
+    <br><br>
+    <h3>프로필 사진 변경</h3>
+    <hr>
+    <br><br><br>
+    <form enctype="multipart/form-data" method="post" action="{% url 'history:upload' %}">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <input type="submit" value="전송">
+        <br><br><br>
+        <button style="width: 150px; border-radius: 16px;"><a href="../../history/history/" style="text-decoration : none; color: white;">돌아가기</a></button>
+    </form>
+</div>
 {% endblock %}
