@@ -10,8 +10,8 @@ def pullup(request):
 def update_count(request):
     if request.method == 'POST':
         member_id = request.session['member_id']
-        triceps = request.POST.get('ud_count')
-        t = History(triceps=triceps, member_id=Member.objects.get(member_id = member_id))
+        pullup = request.POST.get('ud_count')
+        t = History(pullup=pullup, member_id=Member.objects.get(member_id = member_id))
         t.save()
 
     return redirect('home')
