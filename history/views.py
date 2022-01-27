@@ -29,7 +29,6 @@ def history(request):
 
     try:
         uploadFile = Profile.objects.get(member=member)
-        print(uploadFile)
     except:
         uploadFile = ''
     context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile}
@@ -61,10 +60,3 @@ def upload(request):
         'history/change_image.html',
         {'form': form}
     )
-
-def img_show(request):
-    id = request.GET.get('id')
-    uploadFile = Profile.objects.get(id=id)
-    return render(
-        request, 'history/history.html',
-        {'uploadFile': uploadFile})
