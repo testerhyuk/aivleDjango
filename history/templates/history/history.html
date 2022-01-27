@@ -25,7 +25,7 @@
                 {% comment %} BMI {{request.session.}}</p> {% endcomment %}
             </div>
         <hr>
-        <h4>운동 기록</h4>
+        {% comment %} <h4>운동 기록</h4>
             <div class="text-center">
                 <table border="1">
                     <th>트라이셉스 푸쉬다운</th>
@@ -52,7 +52,88 @@
             </div>
         </div>
     </div>
-</section>
+</section> {% endcomment %}
+
+<!-- 대시보드 -->
+<div class="container" style="width:70%;">
+    <div class="row bg-primary text-center" style="margin-top:2rem;">
+        <h3 class="text-white" style="margin-top:1rem;">오늘의 운동량</h3>
+        <div id="current_date" class="text-white"></div>
+
+        <div class="card col-sm" style="height:8rem; margin:1rem;">
+            <div class="card-header" style="font-size:12px">
+                <b>트라이셉스 푸쉬 다운</b>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
+                {% comment %} <p class="card-text">평화</p> {% endcomment %}
+                <a href="#" class="card-link">Card link</a>
+            </div>
+        </div>
+
+        <div class="card col-sm" style="height:8rem; margin:1rem;">
+            <div class="card-header" style="font-size:13px">
+                <b>시티드 숄더 프레스</b>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
+                {% comment %} <p class="card-text">존중</p> {% endcomment %}
+                <a href="#" class="card-link">Card link</a>
+            </div>
+        </div>
+
+        <div class="card col-sm" style="height:8rem; margin:1rem;">
+            <div class="card-header" style="font-size:13px">
+                <b>스쿼트</b>
+            </div>
+            <div class="card-body">
+                <a>{{squat}} 회</a>
+                <h5 class="card-title">0 회</h5>
+                {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
+                {% comment %} <p class="card-text">사랑</p> {% endcomment %}
+                <a href="#" class="card-link">Go</a>
+            </div>
+        </div>
+
+        <div class="card col-sm" style="height:8rem; margin:1rem;">
+            <div class="card-header" style="font-size:13px">
+                <b>풀업</b>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
+                {% comment %} <p class="card-text">희망</p> {% endcomment %}
+                <a href="#" class="card-link">Card link</a>
+            </div>
+        </div>
+
+        <div class="card col-sm" style="height:8rem; margin:1rem;">
+            <div class="card-header" style="font-size:13px">
+                <b>나무 자세</b>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
+                {% comment %} <p class="card-text">행복</p> {% endcomment %}
+                <a href="#" class="card-link">Card link</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- 필요한 js -->
+<script>
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    document.getElementById("current_date").innerHTML = year + "/" + month + "/" + day;
+</script>
+
+
 <footer class="footer">
     <div class="container">
         <div class="row col-lg-4 text-lg-start ms-3"><a href="/history/member_del/">회원탈퇴</a></div>
