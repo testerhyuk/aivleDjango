@@ -8,7 +8,11 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="align-items-center">
-            <img src="{{ uploadFile.file.url }}" class="rounded-circle" width="200" height="200">
+            {% if uploadFile.file %}
+                <img src="{{ uploadFile.file.url }}" class="rounded-circle" width="200" height="200">
+            {% else %}
+                <img src="{% static 'assets/img/profile/profile_default.png' %}" class="rounded-circle" width="200" height="200">
+            {% endif %}
             <br>
             <a href="../change_image"><img src="{% static 'assets/img/profile/camera_icon.png' %}" class="rounded-circle" width="60"></a>
         </div><br>
