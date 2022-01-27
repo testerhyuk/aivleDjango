@@ -6489,6 +6489,10 @@ textarea.form-control-lg {
   color: #1a1e21;
 }
 
+.link-bigger {
+  color: #000
+}
+
 .ratio {
   position: relative;
   width: 100%;
@@ -11943,4 +11947,9 @@ to {transform: scale(1)}
   position: relative;
   bottom: 10px;
   right: 325px;
+}
+
+/* google material icons */
+.material-icons.md-48 {
+  font-size:48px;
 }
