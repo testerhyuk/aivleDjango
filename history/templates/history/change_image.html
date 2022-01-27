@@ -4,7 +4,9 @@
 {% block title %}운동 기록{% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" method="post">
+<h4>프로필 사진 변경</h4>
+<form enctype="multipart/form-data" method="post" action="../history.html">
+    {% csrf_token %}
     <input type="file" name="file">
     <input type="submit" value="전송">
 </form>

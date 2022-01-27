@@ -7,6 +7,11 @@
 <!-- Product section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
+        <div class="align-items-center">
+            <img src="{% static 'assets/img/profile/profile_default.png' %}" class="rounded-circle" width="150">
+            <br>
+            <a href="../change_image"><img src="{% static 'assets/img/profile/camera_icon.png' %}" class="rounded-circle" width="60"></a>
+        </div>
         <div class="row gx-4 gx-lg-5 align-items-center">
         {% comment %} {% if request.session.member_id %}
         <h1>{{request.session.member_name}} 님 반갑습니다.</h1> {% endcomment %}

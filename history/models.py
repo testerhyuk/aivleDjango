@@ -15,3 +15,7 @@ class History(models.Model):
         db_table = 'history'
         app_label = 'history'
         managed = True
+
+
+class Profile(models.Model):
+    image = models.ImageField(upload_to='profile/', null=True)

@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views as config_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +27,8 @@ urlpatterns = [
     path('squat/', include('squat.urls')),
     path('pullup/', include('pullup.urls')),
     path('shoulder/', include('shoulder.urls')),
-    path('history/', include('history.urls')),
+    path('history/', include('history.urls'), name='history'),
     path('member/', include('member.urls')),
-]
+] + static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT)
