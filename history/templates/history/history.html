@@ -8,7 +8,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="align-items-center">
-            <img src="{% static 'assets/img/profile/profile_default.png' %}" class="rounded-circle" width="150">
+            <img src="{{ uploadFile.file.url }}" class="rounded-circle" width="200" height="200">
             <br>
             <a href="../change_image"><img src="{% static 'assets/img/profile/camera_icon.png' %}" class="rounded-circle" width="60"></a>
         </div>
@@ -19,10 +19,10 @@
         <hr>
         <h4>나의 정보</h4>
         이름 {{request.session.member_name}}</p>
-        이메일 {% for em in email %} {{ em }} {% endfor %}</p>
-        전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
-        키 {% for ht in height %} {{ ht }} {% endfor %}</p>
-        몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
+        이메일 {{ email }}</p>
+        전화번호 {{phone}}</p>
+        키 {{height}}</p>
+        몸무게 {{weight}}</p>
         {% comment %} BMI {{request.session.}}</p> {% endcomment %}
         <hr>
         <h4>운동 기록</h4>

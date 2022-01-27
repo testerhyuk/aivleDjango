@@ -18,4 +18,5 @@ class History(models.Model):
 
 
 class Profile(models.Model):
-    image = models.ImageField(upload_to='profile/', null=True)
+    file = models.FileField(upload_to='profile/', null=True)
+    member = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)

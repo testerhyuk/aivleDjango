@@ -1,7 +1,7 @@
-from django.forms import ModelForm
+from django import forms
 from history.models import Profile
 
-class ProfileCreationForm(ModelForm):
+class ProfileCreationForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['file']

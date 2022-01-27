@@ -5,7 +5,7 @@
 
 {% block content %}
 <h4>프로필 사진 변경</h4>
-<form enctype="multipart/form-data" method="post" action="../history/">
+<form enctype="multipart/form-data" method="post" action="{% url 'history:upload' %}">
     {% csrf_token %}
     <input type="file" name="file">
     <input type="submit" value="전송">
