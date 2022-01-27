@@ -19,7 +19,7 @@
         <hr>
         <h4>나의 정보</h4>
         이름 {{request.session.member_name}}</p>
-        이메일 {% for em in email %} {{ em }} {% endfor %}
+        이메일 {% for em in email %} {{ em }} {% endfor %}</p>
         전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
         키 {% for ht in height %} {{ ht }} {% endfor %}</p>
         몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
@@ -47,6 +47,7 @@
                 <div id="label-container"></div>
             </div>
         </div>
+        <div><a href="/history/member_del/">회원탈퇴</a></div>
     </div>
 </section>  
 {% endblock %}
