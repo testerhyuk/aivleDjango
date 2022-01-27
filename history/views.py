@@ -33,6 +33,7 @@ def history(request):
     except:
         uploadFile = ''
 
+    # 로그인한 사용자의 데이터(운동 횟수)
     triceps = History.objects.filter(member_id_id=request.session['member_id']).values_list('triceps', flat=True).filter(date=datetime.today())
     shoulder = History.objects.filter(member_id_id=request.session['member_id']).values_list('shoulder', flat=True).filter(date=datetime.today())
     squat = History.objects.filter(member_id_id=request.session['member_id']).values_list('squat', flat=True).filter(date=datetime.today())
@@ -44,9 +45,10 @@ def history(request):
     squat = sum(squat)
     pullup = sum(pullup)
     vrksasana = sum(vrksasana)
+    total = triceps + shoulder + squat + pullup + vrksasana
     
     context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
-        'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana}
+        'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total}
     return render(
         request,
         'history/history.html',
