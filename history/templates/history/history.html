@@ -12,10 +12,17 @@
         <h1>{{request.session.member_name}} 님 반갑습니다.</h1> {% endcomment %}
         <h2>{{ request.session.member_name }}님 반갑습니다.</h2>
         <hr>
+        <h4>나의 정보</h4>
+        이름 {{request.session.member_name}}</p>
+        전화번호 {{request.session.phone}}</p>
+        키 {{request.session.height}}</p>
+        몸무게 {{request.session.weight}}</p>
+        {% comment %} BMI {{request.session.}}</p> {% endcomment %}
+        <hr>
         <h4>운동 기록</h4>
             <div class="text-center">
             {% for r in record %}
-            {{r.member_id}}
+            {{r.member_id_id}}/{{r.date}}
             {% endfor %}
             </div>
             
