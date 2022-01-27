@@ -79,3 +79,17 @@ def upload(request):
         'history/change_image.html',
         {'form': form}
     )
+
+def update(request):
+    if request.method == "POST":
+        #id = request.user.id
+        #user = User.objects.get(pk=id)
+        member = Member.objects.get(member_id=request.session['member_id'])
+        member.psw_rg = request.POST["psw_rg"]
+        member.email = request.POST["email"]
+        member.phone = request.POST["phone"]
+        member.height = request.POST["height"]
+        member.weight = request.POST["weight"]
+        member.save()
+        return redirect('home')
+    return render(request, 'history/profile_update.html')
