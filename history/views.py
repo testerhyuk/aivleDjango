@@ -7,5 +7,5 @@ def history(request):
         
     return render(
         request, 'history/history.html',
-        {'data': record}
+        {'record': record}
     )
