@@ -6,17 +6,31 @@
 {% block content %}
 <!-- Product section-->
 <section class="py-5">
-    <h1>로그인한 회원의 운동 기록을 보여주는 페이지입니다.</h1>
+    <!-- <h1>로그인한 회원의 운동 기록을 보여주는 페이지입니다.</h1> -->
     <!-- <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
-    <button class="app_btn" type="button" onclick="init()">시작</button>
+    <button class="app_btn" type="button" onclick="init()">시작</button> -->
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
+        {% if request.session.member_id %}
+        <h2>{{request.session.member_name}} 님 반갑습니다.</h2>
+        <!-- {% endif %} -->
+        <hr>
+
+        {{request.session.member_name}}
+            <!-- <td>{{i.date}}</td>
+            <td>{{i.triceps}}</td>
+            <td>{{i.shoulder}}</td>
+            <td>{{i.squat}}</td>
+            <td>{{i.pullup}}</td>
+            <td>{{i.vrksasana}}</td> -->
+        </tr>
+
+            <!-- <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
             <div class="col-md-6">
-                <div><canvas id="canvas" style="margin: 78px 0 0 0;" width="590" height="450"></canvas></div>
+                <div><canvas id="canvas" style="margin: 78px 0 0 0;" width="590" height="450"></canvas></div> -->
                 <div id="label-container"></div>
             </div>
         </div>
-    </div> -->
+    </div>
 </section>  
 {% endblock %}
