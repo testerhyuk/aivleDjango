@@ -48,7 +48,7 @@
 
                                 // Convenience function to setup a webcam
                                 const size_w = 590;
-                                const size_h = 450;
+                                const size_h = 400;
                                 const flip = true; // whether to flip the webcam
                                 webcam = new tmPose.Webcam(size_w, size_h, flip); // width, height, flip
                                 await webcam.setup(); // request access to the webcam
@@ -95,6 +95,7 @@
                                 var ctr = canvas.getContext("2d");
                                 ctr.font="20px Arial"
                                 ctr.fillText(count + "회",0,20);
+
                                 /*for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
