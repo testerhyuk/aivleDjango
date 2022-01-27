@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from .models import Member, Profile
 from .forms import ProfileCreationForm
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-=======
->>>>>>> 8cf250dc2fbd4b0693550179268fe7e473b01641
 from django.shortcuts import render, redirect
 from .models import Member, History
 from django.contrib import messages
@@ -21,11 +18,8 @@ from django.contrib import messages
 #     )
     return render(
         request, 'history/history.html',
-<<<<<<< HEAD
         {'data': record}
-=======
         {'data': info}
->>>>>>> 8cf250dc2fbd4b0693550179268fe7e473b01641
     )
 
 def member_del(request):
@@ -33,8 +27,6 @@ def member_del(request):
         pw_del = request.POST["pw_del"]
         m = Member.objects.filter(psw_rg=pw_del)
 
-<<<<<<< HEAD
-=======
         try:
             m = Member.objects.get(member_id=request.session['member_id'], psw_rg=pw_del)
         except:
@@ -61,7 +53,6 @@ def history(request):
     phone = Member.objects.filter(member_id=request.session['member_id']).values_list('phone').get()
     height = Member.objects.filter(member_id=request.session['member_id']).values_list('height').get()
     weight = Member.objects.filter(member_id=request.session['member_id']).values_list('weight').get()
->>>>>>> 8cf250dc2fbd4b0693550179268fe7e473b01641
     context = {'email':email, 'phone':phone, 'height':height, 'weight':weight}
     return render(
         request,
