@@ -55,7 +55,7 @@
 </section> {% endcomment %}
 
 <!-- 대시보드 -->
-<div class="container" style="width:70%;">
+<div class="container" style="width:85%;">
     <div class="row bg-primary text-center" style="margin-top:2rem;">
         <h3 class="text-white" style="margin-top:1rem;">오늘의 운동량</h3>
         <div id="current_date" class="text-white"></div>
@@ -65,10 +65,10 @@
                 <b>트라이셉스 푸쉬 다운</b>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{triceps}} 회</h5>
                 {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
                 {% comment %} <p class="card-text">평화</p> {% endcomment %}
-                <a href="#" class="card-link">Card link</a>
+                <a href="../../triceps/triceps" class="card-link">Go to Triceps!</a>
             </div>
         </div>
 
@@ -77,10 +77,10 @@
                 <b>시티드 숄더 프레스</b>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{shoulder}} 회</h5>
                 {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
                 {% comment %} <p class="card-text">존중</p> {% endcomment %}
-                <a href="#" class="card-link">Card link</a>
+                <a href="../../shoulder/shoulder" class="card-link">Go to Shoulder!</a>
             </div>
         </div>
 
@@ -89,11 +89,10 @@
                 <b>스쿼트</b>
             </div>
             <div class="card-body">
-                <a>{{squat}} 회</a>
-                <h5 class="card-title">0 회</h5>
+                <h5 class="card-title">{{squat}} 회</h5>
                 {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
                 {% comment %} <p class="card-text">사랑</p> {% endcomment %}
-                <a href="#" class="card-link">Go</a>
+                <a href="../../squat/squat" class="card-link">Go to Squat!</a>
             </div>
         </div>
 
@@ -102,10 +101,10 @@
                 <b>풀업</b>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{pullup}} 회</h5>
                 {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
                 {% comment %} <p class="card-text">희망</p> {% endcomment %}
-                <a href="#" class="card-link">Card link</a>
+                <a href="../../pullup/pullup" class="card-link">Go to Pullup!</a>
             </div>
         </div>
 
@@ -114,17 +113,17 @@
                 <b>나무 자세</b>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{vrksasana}} 회</h5>
                 {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
                 {% comment %} <p class="card-text">행복</p> {% endcomment %}
-                <a href="#" class="card-link">Card link</a>
+                <a href="../../vrksasana/vrksasana/" class="card-link">Go to vrksasana!</a>
             </div>
         </div>
         
     </div>
 </div>
 
-<!-- 필요한 js -->
+<!-- 대시보드 필요한 js -->
 <script>
     date = new Date();
     year = date.getFullYear();

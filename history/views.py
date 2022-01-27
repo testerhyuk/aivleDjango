@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from .models import Member, History
 from django.contrib import messages
+from datetime import datetime
 
 def member_del(request):
     if request.method == "POST":
@@ -29,9 +30,21 @@ def history(request):
     phone = Member.objects.filter(member_id=request.session['member_id']).values_list('phone').get()
     height = Member.objects.filter(member_id=request.session['member_id']).values_list('height').get()
     weight = Member.objects.filter(member_id=request.session['member_id']).values_list('weight').get()
-    squat = History.objects.filter(member_id_id=request.session['member_id']).values_list('squat').filter()
+
+    triceps = History.objects.filter(member_id_id=request.session['member_id']).values_list('triceps', flat=True).filter(date=datetime.today())
+    shoulder = History.objects.filter(member_id_id=request.session['member_id']).values_list('shoulder', flat=True).filter(date=datetime.today())
+    squat = History.objects.filter(member_id_id=request.session['member_id']).values_list('squat', flat=True).filter(date=datetime.today())
+    pullup = History.objects.filter(member_id_id=request.session['member_id']).values_list('pullup', flat=True).filter(date=datetime.today())
+    vrksasana = History.objects.filter(member_id_id=request.session['member_id']).values_list('vrksasana', flat=True).filter(date=datetime.today())
+
+    triceps = sum(triceps)
+    shoulder = sum(shoulder)
+    squat = sum(squat)
+    pullup = sum(pullup)
+    vrksasana = sum(vrksasana)
     
-    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'squat':squat}
+    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 
+        'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana}
     return render(
         request,
         'history/history.html',
