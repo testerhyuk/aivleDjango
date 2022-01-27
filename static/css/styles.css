@@ -7668,6 +7668,11 @@ textarea.form-control-lg {
   text-align: left !important;
 }
 
+.text-left {
+  text-align: left !important;
+  margin: 0 0 20px 0;
+}
+
 .text-end {
   text-align: right !important;
 }

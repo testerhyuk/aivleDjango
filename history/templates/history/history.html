@@ -11,31 +11,35 @@
             <img src="{% static 'assets/img/profile/profile_default.png' %}" class="rounded-circle" width="150">
             <br>
             <a href="../change_image"><img src="{% static 'assets/img/profile/camera_icon.png' %}" class="rounded-circle" width="60"></a>
-        </div>
-        <div class="row gx-4 gx-lg-5 align-items-center">
-        {% comment %} {% if request.session.member_id %}
-        <h1>{{request.session.member_name}} 님 반갑습니다.</h1> {% endcomment %}
+        </div><br>
+        <div class="row gx-4 gx-lg-5 align-items-center">        
         <h2>{{ request.session.member_name }}님 반갑습니다.</h2>
         <hr>
         <h4>나의 정보</h4>
-        이름 {{request.session.member_name}}</p>
-        이메일 {% for em in email %} {{ em }} {% endfor %}</p>
-        전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
-        키 {% for ht in height %} {{ ht }} {% endfor %}</p>
-        몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
-        {% comment %} BMI {{request.session.}}</p> {% endcomment %}
+            <div class="text-left ms-4"><br>
+                이름 {{request.session.member_name}}</p>
+                이메일 {% for em in email %} {{ em }} {% endfor %}</p>
+                전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
+                키 {% for ht in height %} {{ ht }} {% endfor %}</p>
+                몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
+                {% comment %} BMI {{request.session.}}</p> {% endcomment %}
+            </div>
         <hr>
         <h4>운동 기록</h4>
             <div class="text-center">
                 <table border="1">
-                    <th>트라이셉스</th>
-                    <th>a</th>
-                    <th>b</th>
-                    <th>c</th>
-                    <th>d</th>
+                    <th>트라이셉스 푸쉬다운</th>
+                    <th>시티드 숄더 프레스</th>
+                    <th>스쿼트</th>
+                    <th>풀업</th>
+                    <th>나무 자세</th>
                     {% for i in data %}
                         <tr>
-                            
+                            <td>{{i.id}}</td>
+                            <td>{{i.year}}</td>
+                            <td>{{i.month}}</td>
+                            <td>{{i.type}}</td>
+                            <td>{{i.name}}</td> 
                         </tr>
                     {% endfor %}
                 </table>
@@ -47,7 +51,11 @@
                 <div id="label-container"></div>
             </div>
         </div>
-        <div><a href="/history/member_del/">회원탈퇴</a></div>
     </div>
-</section>  
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row col-lg-4 text-lg-start ms-3"><a href="/history/member_del/">회원탈퇴</a></div>
+    </div>
+</footer>
 {% endblock %}
