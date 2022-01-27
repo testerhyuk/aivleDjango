@@ -6,17 +6,33 @@
 {% block content %}
 <!-- Product section-->
 <section class="py-5">
-    <h1>로그인한 회원의 운동 기록을 보여주는 페이지입니다.</h1>
-    <!-- <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
-    <button class="app_btn" type="button" onclick="init()">시작</button>
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
+        {% comment %} {% if request.session.member_id %}
+        <h1>{{request.session.member_name}} 님 반갑습니다.</h1> {% endcomment %}
+        <h2>{{ request.session.member_name }}님 반갑습니다.</h2>
+        <hr>
+        <h4>나의 정보</h4>
+        이름 {{request.session.member_name}}</p>
+        전화번호 {{request.session.phone}}</p>
+        키 {{request.session.height}}</p>
+        몸무게 {{request.session.weight}}</p>
+        {% comment %} BMI {{request.session.}}</p> {% endcomment %}
+        <hr>
+        <h4>운동 기록</h4>
+            <div class="text-center">
+            {% for r in record %}
+            {{r.member_id_id}}/{{r.date}}
+            {% endfor %}
+            </div>
+            
+
+            <!-- <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
             <div class="col-md-6">
-                <div><canvas id="canvas" style="margin: 78px 0 0 0;" width="590" height="450"></canvas></div>
+                <div><canvas id="canvas" style="margin: 78px 0 0 0;" width="590" height="450"></canvas></div> -->
                 <div id="label-container"></div>
             </div>
         </div>
-    </div> -->
+    </div>
 </section>  
 {% endblock %}

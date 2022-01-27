@@ -21,7 +21,8 @@
                     <div class="col-md-6" ><iframe width="540" height="450" src="https://www.youtube.com/embed/ywLWbwF42kE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                     <div class="col-md-6">
 
-                        <div><canvas id="canvas" width="590" height="450" style="margin-top: 0px; border-style: solid; border-color: black; border-width:1px;"></canvas></div>
+                        <div><canvas id="canvas" width="590" height="400" style="margin-top: 0px; border-style: solid; border-color: black; border-width:1px;"></canvas></div>
+                        <div><canvas id="canvas_text" width="590" height ="30" style="margin-top: 0px; border-style: solid; border-color: black; border-width:1px;"></canvas></div>
                         <div id="label-container"></div>
 
                         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -47,7 +48,7 @@
 
                                 // Convenience function to setup a webcam
                                 const size_w = 590;
-                                const size_h = 450;
+                                const size_h = 400;
                                 const flip = true; // whether to flip the webcam
                                 webcam = new tmPose.Webcam(size_w, size_h, flip); // width, height, flip
                                 await webcam.setup(); // request access to the webcam
@@ -71,7 +72,7 @@
                             }
                             var status = "Ready"
                             var count = 0
-
+                            
                             async function predict() {
                                 // Prediction #1: run input through posenet
                                 // estimatePose can take in an image, video or canvas html element
@@ -90,6 +91,11 @@
                                 } else if(prediction[1].probability.toFixed(2)==1.00){
                                     status = "UP"
                                 }
+                                var canvas = document.getElementById("canvas_text");
+                                var ctr = canvas.getContext("2d");
+                                ctr.font="20px Arial"
+                                ctr.fillText(count + "회",0,20);
+
                                 /*for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
