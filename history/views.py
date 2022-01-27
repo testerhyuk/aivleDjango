@@ -29,7 +29,9 @@ def history(request):
     phone = Member.objects.filter(member_id=request.session['member_id']).values_list('phone').get()
     height = Member.objects.filter(member_id=request.session['member_id']).values_list('height').get()
     weight = Member.objects.filter(member_id=request.session['member_id']).values_list('weight').get()
-    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight}
+    squat = History.objects.filter(member_id_id=request.session['member_id']).values_list('squat').filter()
+    
+    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'squat':squat}
     return render(
         request,
         'history/history.html',
