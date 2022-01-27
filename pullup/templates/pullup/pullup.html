@@ -11,7 +11,7 @@
             <form method='post' action='../update_count/' onsubmit='return ext()'>
                 {% csrf_token %}
                 <input type="hidden" id='ud_count' name='ud_count' value=''>
-                <button class="app_btn" type="submit">종료</button>
+                <button class="app_btn" type="submit" onclick="alert('수고하셨습니다!\n메인 화면으로 돌아갑니다.');">종료</button>
             </form>
             {% else %}
             <button class="app_btn" type="button" onclick="window.location.reload()">종료</button>
@@ -172,8 +172,8 @@
 
         async function ext(){
             webcam.pause()
-            document.getElementById('ud_count').value = count
-
+            document.getElementById('ud_count').value = cnt
+            
             return true;
         }
         
