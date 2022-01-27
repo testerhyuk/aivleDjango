@@ -23,3 +23,4 @@ def history(request):
         'history/history.html',
         context
     )
+
