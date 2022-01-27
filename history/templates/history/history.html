@@ -14,9 +14,10 @@
         <hr>
         <h4>나의 정보</h4>
         이름 {{request.session.member_name}}</p>
-        전화번호 {{request.session.phone}}</p>
-        키 {{request.session.height}}</p>
-        몸무게 {{request.session.weight}}</p>
+        이메일 {% for em in email %} {{ em }} {% endfor %}
+        전화번호 {% for ph in phone %} {{ ph }} {% endfor %}</p>
+        키 {% for ht in height %} {{ ht }} {% endfor %}</p>
+        몸무게 {% for wt in weight %} {{ wt }} {% endfor %}</p>
         {% comment %} BMI {{request.session.}}</p> {% endcomment %}
         <hr>
         <h4>운동 기록</h4>

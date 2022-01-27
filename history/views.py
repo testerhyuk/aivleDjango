@@ -11,9 +11,15 @@ def info(request):
     )
 
 def history(request):
-    record = History.objects.all()
-        
+    email = Member.objects.filter(member_id=request.session['member_id']).values_list('email').get()
+    phone = Member.objects.filter(member_id=request.session['member_id']).values_list('phone').get()
+    height = Member.objects.filter(member_id=request.session['member_id']).values_list('height').get()
+    weight = Member.objects.filter(member_id=request.session['member_id']).values_list('weight').get()
+
+    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight}
+
     return render(
-        request, 'history/history.html',
-        {'record': record}
+        request,
+        'history/history.html',
+        context
     )
