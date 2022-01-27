@@ -26,7 +26,15 @@
             전화번호 {{phone}}</p>
             키 {{height}}</p>
             몸무게 {{weight}}</p>
-            BMI {{bmi}}</p>
+            {% if bmi <= 18.5 %}
+                BMI {{bmi}}(저체중)</p>
+            {% elif bmi <= 23 %}
+                BMI {{bmi}}(정상)</p>
+            {% elif bmi <= 25 %}
+                BMI {{bmi}}(정상)</p>
+            {% else %}
+                BMI {{bmi}}(비만)</p>
+            {% endif %}
         </div>    
         <hr>
 
