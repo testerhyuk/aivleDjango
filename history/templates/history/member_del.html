@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>회원탈퇴</h1>
-    <form action="/history/member_del/" method="POST">
+
+    <form action="/history/member_del/" method="POST" style="margin: 0 auto; width:250px;">
+        <h1>회원탈퇴</h1>
         {% csrf_token %}
-        비밀번호: <input type="text" name="pw_del">
+        비밀번호: <input type="text" name="pw_del" style="width:200px; height:25px; font-size:20px;">
         <input type="submit" value="회원탈퇴">
     </form>
 
