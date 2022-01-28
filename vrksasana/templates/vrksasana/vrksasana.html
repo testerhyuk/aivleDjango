@@ -18,9 +18,12 @@
     <button class="app_btn" type="button" onclick="init()">시작</button>
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img src="{% static 'assets/img/portfolio/vrksasana.jpg' %}"></div>
+            <div class="col-md-6"><iframe width="560" height="430" src="https://www.youtube.com/embed/TptsloulelU" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe></div>
             <div class="col-md-6">
-                <div><canvas id="canvas" style="margin: 78px 0 0 0;" width="590" height="450"></canvas></div>
+                <div class="col-md-6" style="padding:0px; width:560px; height:430px; background-color:gray;"><canvas id="canvas"></canvas></div>
                 <div id="label-container"></div>
                 <!-- <div id="count-show"></div> -->
                 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -44,8 +47,8 @@
                         maxPredictions = model.getTotalClasses();
 
                         // Convenience function to setup a webcam
-                        const size = 500;
-                        const size2 = 418;
+                        const size = 560;
+                        const size2 = 450;
                         const flip = true; // whether to flip the webcam
                         webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
                         await webcam.setup(); // request access to the webcam
@@ -100,12 +103,13 @@
                                 
                             }
                         }
+                        // 횟수 count 부분 일괄 삭제
                         //countshow.innerHTML = vrkCnt + "회"
-                        for (let i = 0; i < maxPredictions; i++) {
+                        /*for (let i = 0; i < maxPredictions; i++) {
                             const classPrediction =
                                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                             labelContainer.childNodes[i].innerHTML = classPrediction;
-                        }
+                        }*/
 
                         // finally draw the poses
                         drawPose(pose);

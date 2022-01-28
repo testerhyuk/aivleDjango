@@ -18,10 +18,10 @@
             <button class="app_btn" type="button" onclick="init()">시작</button>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><iframe width="540" height="450" src="https://www.youtube.com/embed/Fk9j6pQ6ej8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="col-md-6"><iframe width="560" height="430" src="https://www.youtube.com/embed/Fk9j6pQ6ej8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                     <div class="col-md-6">
                         
-                        <div><canvas id="canvas" style="margin:78px 0 0 0;" width="590" height="450" style="border-style: solid; border-color: black; border-width:1px;"></canvas></div>
+                        <div><canvas id="canvas" style="padding:0px; width:430px; height:430px; background-color:gray;"></canvas></div>
                         <div id="label-container"></div>
                         <div id="count-show"></div>
 
@@ -103,11 +103,11 @@
                                 
                                 countshow.innerHTML = count + "회"
                                 
-                                for (let i = 0; i < maxPredictions; i++) {
+                                /* for (let i = 0; i < maxPredictions; i++) {
                                     const classPrediction =
                                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                                     labelContainer.childNodes[i].innerHTML = classPrediction;
-                                }
+                                } */
                                 
                                 // finally draw the poses
                                 drawPose(pose);
@@ -133,9 +133,9 @@
                             }
                         </script>
                     </div>
-                    <hr>
+                    <br>
                     <div>
-                        <h4><strong>초보자도 쉽게 시작할 수 있는 스쿼트</strong></h4><br>
+                        <br><h4><strong>초보자도 쉽게 시작할 수 있는 스쿼트</strong></h4><br>
                         <p>스쿼트는 다른 보조기구가 없이도 초보자들이 가장 쉽게 접할 수 있고, 때와 장소를 가리지 않고 단련할 수 있는 운동입니다.</p>
                         <p>대표적인 하체 운동으로 알려져 있지만 하체 뿐만 아니라 코어, 힙 및 상체의 근력 향상에도 도움을 주며, 다이어트에도 아주 효과적입니다.</p>
                         <p>스쿼트를 통해 허벅지 둔근을 단련하면 혈류가 원활해져 노폐물 제거에 효과적이고, 또한 온몸으로 영양분이 잘 공급될 수 있도록 하는 펌프 역할을 합니다.</p>
