@@ -1,4 +1,4 @@
-from .models import Member, Profile, History
+from .models import Member, Profile, History, Rank
 from .forms import ProfileCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -47,14 +47,26 @@ def history(request):
     vrksasana = sum(vrksasana)
     total = triceps + shoulder + squat + pullup + vrksasana
     bmi = round(weight / (height * height) * 10000, 2)
-    
-    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
-        'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total, 'bmi':bmi}
-    return render(
-        request,
-        'history/history.html',
-        context
+
+    # total값 rank 테이블에 저장
+    rnk = Rank(
+        member_id = member,
+        total = total
     )
+    rnk.save()
+
+    # .values_list('total', flat=True)
+    # rank_name = Rank.objects.order_by('total').filter(date=datetime.today()).values_list('member_id_id', flat=True)
+    # rank_total = Rank.objects.order_by('total').filter(date=datetime.today()).values_list('total', flat=True)
+
+    
+    # context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
+    #     'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total, 'bmi':bmi}
+    # return render(
+    #     request,
+    #     'history/history.html',
+    #     context
+    # )
 
 def change_image(request):
     return render(

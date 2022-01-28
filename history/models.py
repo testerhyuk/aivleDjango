@@ -20,3 +20,11 @@ class History(models.Model):
 class Profile(models.Model):
     file = models.FileField(upload_to='profile/', null=True)
     member = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)
+
+class Rank(models.Model):
+    date = models.DateField(auto_now=True)
+    member_id = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)
+    total = models.IntegerField()
+
+    class Meta:
+        managed = True
