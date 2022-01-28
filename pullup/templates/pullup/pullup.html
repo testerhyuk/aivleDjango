@@ -10,7 +10,7 @@
         {% if request.session.member_id %}
             <form method='post' action='../update_count/' onsubmit='return ext()'>
                 {% csrf_token %}
-                <input type="hidden" id='ud_count' name='ud_count' value=''>
+                <input type="hidden" id='ud_count' name='ud_count' value=0>
                 <button class="app_btn" type="submit" onclick="alert('수고하셨습니다!\n메인 화면으로 돌아갑니다.');">종료</button>
             </form>
             {% else %}
@@ -29,9 +29,9 @@
                 <!-- HTML5 에서 동적인(그래픽) 기능을 수행할 수 있는 canvas, 학습한 모델에 반응하여 웹캠이 켜질 공간 -->
                 <div class="col-md-6" style="padding:0px; width:430px; height:430px; background-color:gray;">
                     <canvas id="canvas">호환되지 않는 브라우저입니다.</canvas>
-                </div>
-                <div id="label-container"></div>
-                <div id="count-show"></div>
+                    <div id="label-container"></div>
+                    <div id="count-show"></div>
+                </div>                
 
                 <div>
                     <br><br>

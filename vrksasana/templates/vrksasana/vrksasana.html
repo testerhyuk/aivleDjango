@@ -9,7 +9,7 @@
     {% if request.session.member_id %}
         <form method='post' action='../update_count/' onsubmit='return ext()'>
             {% csrf_token %}
-            <input type="hidden" id='ud_count' name='ud_count' value=''>
+            <input type="hidden" id='ud_count' name='ud_count' value=0>
             <button class="app_btn" type="submit">종료</button>
         </form>
     {% else %}
