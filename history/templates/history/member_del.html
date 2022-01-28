@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>회원탈퇴</h1>
-    <form action="/history/member_del/" method="POST">
-        {% csrf_token %}
-        비밀번호: <input type="text" name="pw_del">
-        <input type="submit" value="회원탈퇴">
-    </form>
+<div class="container px-4 px-lg-5 my-5">
+    <div class="align-items-center">
+        <h1>회원탈퇴</h1><br>
+        <h6>탈퇴하시겠습니까?</p>
+        회원탈퇴를 하실 경우 회원님의 모든 운동 기록이 삭제됩니다. 신중하게 결정해주세요.</h6><br>
+            <div class="text-center ms-4">
+                <form action="/history/member_del/" method="POST">
+                    {% csrf_token %}
+                    비밀번호: <input type="text" name="pw_del" placeholder="비밀번호를 입력해주세요" style="width:220px; height:25px;"></p>
+                    <input type="submit" value="회원탈퇴">
+                </form>
 
-    {% if msg %}
-        {{ msg }}
-    {% endif %}
+                {% if msg %}
+                    {{ msg }}
+                {% endif %}
+            </div>
+    </div>
+</div>
 {% endblock %}
