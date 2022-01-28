@@ -2,16 +2,20 @@
 {% load static %}
 
 {% block content %}
-<h1 style="margin 0 auto;">회원수정</h1>
-    <form action="/history/profile_update/" method="POST" style="margin: 0 auto; width:250px;">
-        {% csrf_token %}
-        비밀번호<br><input  type="password" name="psw_rg" style="width:200px;height:20px;font-size:20px;"><br><br>
-        이메일<br><input type="email" name="email" placeholder="aivle@aivle.com"style="width:200px;height:20px;font-size:20px;"><br><br>
-        번호<br><input type="tel" name="phone" placeholder="010-0000-0000" style="width:200px; height:20px; font-size:20px;"><br><br>
-        키<br><input type="number" name="height" style="width:200px; height:20px; font-size:20px;"><br><br>
-        몸무게<br><input type="number" name="weight"style="width:200px; height:20px; font-size:20px;"><br><br>
+<div class="container px-4 px-lg-5 my-5">
+    <div class="align-items-center">
+        <h1 style="margin 0 auto;">회원수정</h1>
+            <form action="/history/profile_update/" method="POST" style="margin: 0 auto; width:250px;">
+                {% csrf_token %}
+                비밀번호<br><input  type="password" name="psw_rg" style="width:200px; height:20px; font-size:20px;"><br><br>
+                이메일<br><input type="email" name="email" placeholder="aivle@aivle.com"style="width:200px; height:20px; font-size:20px;"><br><br>
+                번호<br><input type="tel" name="phone" placeholder="010-0000-0000" style="width:200px; height:20px; font-size:20px;"><br><br>
+                키<br><input type="number" name="height" style="width:200px; height:20px; font-size:20px;"><br><br>
+                몸무게<br><input type="number" name="weight"style="width:200px; height:20px; font-size:20px;"><br><br>
 
-        <input type="submit" value="회원수정" style="margin: 0 auto; width:200px;">
-    </form>
+                <input type="submit" value="회원수정" style="margin: 0 auto; width:200px;">
+            </form>
 
+    </div>            
+</div>            
 {% endblock %}
