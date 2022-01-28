@@ -96,6 +96,7 @@ def update(request):
             member.weight = request.POST["weight"]
             member.save()
         except:
-            return render(request, 'history/profile_update.html')
+            msg = '빈칸이 있습니다.'
+            return render(request, 'history/profile_update.html', { 'msg': msg })
         return redirect('home')
     return render(request, 'history/profile_update.html')
