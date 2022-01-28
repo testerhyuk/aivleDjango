@@ -47,6 +47,15 @@ def history(request):
     vrksasana = sum(vrksasana)
     total = triceps + shoulder + squat + pullup + vrksasana
     bmi = round(weight / (height * height) * 10000, 2)
+
+
+    # total값 rank 테이블에 저장
+    rnk = Rank(
+        member_id = request.session['member_id'],
+        total = total
+    )
+    rnk.save()
+
     
     context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
         'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total, 'bmi':bmi}
