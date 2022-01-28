@@ -59,14 +59,13 @@ def history(request):
     # rank_name = Rank.objects.order_by('total').filter(date=datetime.today()).values_list('member_id_id', flat=True)
     # rank_total = Rank.objects.order_by('total').filter(date=datetime.today()).values_list('total', flat=True)
 
-    
-    # context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
-    #     'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total, 'bmi':bmi}
-    # return render(
-    #     request,
-    #     'history/history.html',
-    #     context
-    # )
+    context = {'email':email, 'phone':phone, 'height':height, 'weight':weight, 'uploadFile':uploadFile,
+        'triceps':triceps, 'shoulder':shoulder, 'squat':squat, 'pullup':pullup, 'vrksasana':vrksasana, 'total':total, 'bmi':bmi}
+    return render(
+        request,
+        'history/history.html',
+        context
+    )
 
 def change_image(request):
     return render(
