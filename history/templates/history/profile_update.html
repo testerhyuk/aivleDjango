@@ -4,11 +4,10 @@
 {% block content %}
 <div class="container px-4 px-lg-5 my-5">
     <div class="align-items-center">
-        
+        <h1>회원수정</h1><br>
             <form action="/history/profile_update/" method="POST" style="margin: 0 auto; width:250px;">
-                <h1>회원수정</h1><br>
                 {% csrf_token %}
-                비밀번호<br><input  type="password" name="psw_rg" style="width:200px; height:25px; font-size:20px;"><br><br>
+                <br>비밀번호<br><input  type="password" name="psw_rg" style="width:200px; height:25px; font-size:20px;"><br><br>
                 이메일<br><input type="email" name="email" placeholder="aivle@aivle.com"style="width:200px; height:25px; font-size:20px;"><br><br>
                 번호<br><input type="tel" name="phone" placeholder="member.phone" style="width:200px; height:25px; font-size:20px;"><br><br>
                 키<br><input type="number" name="height" style="width:200px; height:25px; font-size:20px;"><br><br>
