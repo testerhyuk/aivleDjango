@@ -87,12 +87,16 @@ def update(request):
     if request.method == "POST":
         #id = request.user.id
         #user = User.objects.get(pk=id)
-        member = Member.objects.get(member_id=request.session['member_id'])
-        member.psw_rg = request.POST["psw_rg"]
-        member.email = request.POST["email"]
-        member.phone = request.POST["phone"]
-        member.height = request.POST["height"]
-        member.weight = request.POST["weight"]
-        member.save()
+        try :
+            member = Member.objects.get(member_id=request.session['member_id'])
+            member.psw_rg = request.POST["psw_rg"]
+            member.email = request.POST["email"]
+            member.phone = request.POST["phone"]
+            member.height = request.POST["height"]
+            member.weight = request.POST["weight"]
+            member.save()
+        except:
+            msg = '빈칸이 있습니다.'
+            return render(request, 'history/profile_update.html', { 'msg': msg })
         return redirect('home')
     return render(request, 'history/profile_update.html')
