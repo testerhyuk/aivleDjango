@@ -1,6 +1,6 @@
-from .models import Member, Profile, History
+from .models import Member, Profile, History, Rank
 from .forms import ProfileCreationForm
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from datetime import datetime
 
